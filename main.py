@@ -94,3 +94,5 @@ def fetch_bookit():
 	f.close()
 
 fetch_bookit()
+fetch_lunch()
+fetch_feeds()
