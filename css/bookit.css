@@ -1,0 +1,37 @@
+body {
+	margin: 0;
+	font-family: "Helvetica Neue", sans-serif;
+	color: #444;
+	font-weight: 500;
+	background-color: #f1f1f1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+article {
+	width: 90%;
+	background-color: #fff;
+	padding: 0.5em 0.5em;
+	margin: 10px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+h1 {
+	font-size: 2.2rem;
+	border-bottom: 1px solid #aaa;
+	width: 80%;
+	text-align: center;
+	padding-bottom: 7px;
+	margin-bottom: 0;
+}
+
+h2 {
+	font-size: 1.8rem;
+}
+
+div {
+	text-align: center;
+}
