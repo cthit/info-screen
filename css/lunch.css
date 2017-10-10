@@ -16,11 +16,12 @@ article {
 	border-radius: 0.1em;
 	background-color: #fff;
 	box-shadow: 1px 1px 5px #aaa;
-}
+}						
 
 h1 {
 	margin: 0 auto;
 	text-align: center;
+	font-weight: 300;
 }
 
 dt {
