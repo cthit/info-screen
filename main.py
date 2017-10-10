@@ -79,6 +79,8 @@ def fetch_bookit():
 	template = Template(filename=template_path("bookit"))
 	bookings = json.loads(r.text)
 
+	bookings = sorted(bookings, key=lambda booking: booking['begin_date'])
+
 	for booking in bookings:
 		booking['begin_date'] = parse_date(booking['begin_date'])
 		booking['end_date'] = parse_date(booking['end_date'])
