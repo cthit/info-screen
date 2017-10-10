@@ -61,7 +61,7 @@ def fetch_lunch():
 	f = open(out_filename("lunch"), 'w')
 	template = Template(filename=template_path("lunch"))
 	restaurants = json.loads(r.text)
-	f.write(template.render(restaurants=restaurants))
+	f.write(template.render(restaurants=[rest for rest in restaurants if rest['location'] != 'Lindholmen']))
 	f.close()
 
 
