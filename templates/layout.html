@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+ 	% for item in items:
+        <article>
+        	<h1>${item['title']}</h1>
+        	${item['description']}
+        </article>
+    % endfor
+</body>
+</html>

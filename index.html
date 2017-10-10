@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		html, body {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			display: flex;
+		}
+		iframe {
+			flex: 1;
+		}
+		.hide { display: none; }
+	</style>
+</head>
+<body>
+<iframe id="frame1-1" frameborder="0" border="0" scrolling="no"></iframe>
+<iframe id="frame1-2" frameborder="0" border="0" scrolling="no"></iframe>
+<iframe id="frame2-1" frameborder="0" border="0" scrolling="no"></iframe>
+<iframe id="frame2-2" frameborder="0" border="0" scrolling="no"></iframe>
+<script>
+var sites = [
+        ["https://chalmers.it/posts", "https://chalmers.it/lunch/feed"],
+        ["https://m.xkcd.com/"],
+        ["https://se.timeedit.net/web/chalmers/db1/public/riqm8Q1Ym1XZ44Qy517Y503064Z8Z053X55Y87QQ4YoX13550944Y5YQX3144Q808x8Xl341l098u471955YZ3Y15Z0X95Z544Qul80qWZQ5l6Qcf8ckqluZ0Q3bZXQqQo4l555ZQ0ZkqcQ1552mW3ZZ7qbQo1QxbQQZogrmZcZq605.html"]
+]
+var index = 0;
+var time = 3000;
+var frame1a = document.getElementById('frame1-1');
+var frame1b = document.getElementById('frame1-2');
+var frame2a = document.getElementById('frame2-1');
+var frame2b = document.getElementById('frame2-2');
+
+(function loop() {
+        var currentSites = sites[index];
+
+        if (currentSites.length > 1) {
+                frame2.classList.remove('hide');
+                frame1.src = currentSites[0];
+                frame2.src = currentSites[1];
+        } else {
+                frame1.src = currentSites[0];
+                frame2.classList.add('hide');
+        }
+
+        index += 1;
+        if(index === sites.length) {
+                index = 0;
+        }
+
+
+        setTimeout(loop, time);
+})();
+</script>
+</body>
+</html>
