@@ -9,9 +9,11 @@
         <article>
         	<h1>${room}</h1>
         	% for booking in bookings:
-        		<h2>${booking['title']}</h2>
-        		<div>${booking['description']}</div>
-        		<div>${booking['begin_date']} - ${booking['end_date']}</div>
+        		<div>
+	        		<h2>${booking['title']}</h2>
+	        		<div>${booking['description']}</div>
+	        		<div>${booking['begin_date']} - ${booking['end_date']}</div>
+        		</div>
 			% endfor
         </article>
     % endfor
