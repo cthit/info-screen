@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8"/>
+</head>
+<body>
+ 	% for room, bookings in bookings_by_room.items():
+        <article>
+        	<h1>${room}</h1>
+        	% for booking in bookings:
+        		<h2>${booking['title']}</h2>
+        		<div>${booking['description']}</div>
+        		<div>${booking['begin_date']} - ${booking['end_date']}</div>
+			% endfor
+        </article>
+    % endfor
+</body>
+</html>

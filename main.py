@@ -1,6 +1,7 @@
 import feedparser
 from inflection import parameterize
 from mako.template import Template
+from datetime import datetime
 import requests
 import json
 
@@ -65,4 +66,29 @@ def fetch_lunch():
 	f.close()
 
 
-fetch_lunch()
+def parse_date(date):
+	date = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%fZ")
+	return date.strftime("%H:%M")
+
+def fetch_bookit():
+	bookit_url = "https://bookit.chalmers.it/bookings/today.json"
+	r = requests.get(bookit_url)
+	r.raise_for_status()
+
+	f = open(out_filename("bookit"), 'w')
+	template = Template(filename=template_path("bookit"))
+	bookings = json.loads(r.text)
+
+	for booking in bookings:
+		booking['begin_date'] = parse_date(booking['begin_date'])
+		booking['end_date'] = parse_date(booking['end_date'])
+
+	bookings_by_room = {}
+
+	for booking in bookings:
+		bookings_by_room.setdefault(booking['room'], []).append(booking)
+
+	f.write(template.render(bookings_by_room=bookings_by_room))
+	f.close()
+
+fetch_bookit()
