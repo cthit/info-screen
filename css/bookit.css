@@ -52,7 +52,7 @@ article {
 }
 
 h1 {
-	font-size: 2.2rem;
+	font-size: 2.5rem;
 	border-bottom: 1px solid rgba(230,230,230,0.5);
 	width: 60%;
 	text-align: center;
@@ -62,16 +62,16 @@ h1 {
 }
 
 h2 {
-	font-size: 1.6rem;
+	font-size: 1.9rem;
 	margin-bottom: 0;
 }
 
 p {
-	font-size: 1.2rem;
+	font-size: 1.5rem;
 }
 
 time {
-	font-size: 1rem;
+	font-size: 3rem;
 }
 
 div {

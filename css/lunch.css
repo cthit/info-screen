@@ -16,7 +16,7 @@ main {
 }
 
 article {
-	width: 230px;
+	width: 300px;
 	height: auto;
 	padding: 1em;
 	margin: 15px 2%;
@@ -29,13 +29,25 @@ h1 {
 	margin: 0 auto;
 	text-align: center;
 	font-weight: 300;
+	font-size: 1.5rem;
 }
 
 dt {
 	font-weight: 600;
+	font-size: 1.2rem;
+}
+
+.allergens {
+	font-size: 1rem;
+	font-weight: 300;
+}
+
+.allergens::before {
+	content: "- ";
 }
 
 dd {
 	margin-bottom: 7px;
 	margin-left: 0;
+	font-size: 1rem;
 }
