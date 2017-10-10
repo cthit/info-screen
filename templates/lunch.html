@@ -6,16 +6,18 @@
     <link rel="stylesheet" href="css/lunch.css">
 </head>
 <body>
- 	% for rest in restaurants:
-        <article>
-        	<h1>${rest['name']}</h1>
-        	<dl>
-        		% for meal in rest['meals']['sv']:
-        			<dt>${meal['title']} <span class="allergens">${' '.join(meal['allergens'] if meal['allergens'] else [])}</span></dt>
-        			<dd>${meal['summary']}</dd>
-        		% endfor
-        	</dl>
-        </article>
-    % endfor
+    <main>
+     	% for rest in restaurants:
+            <article>
+            	<h1>${rest['name']}</h1>
+            	<dl>
+            		% for meal in rest['meals']['sv']:
+            			<dt>${meal['title']} <span class="allergens">${' '.join(meal['allergens'] if meal['allergens'] else [])}</span></dt>
+            			<dd>${meal['summary']}</dd>
+            		% endfor
+            	</dl>
+            </article>
+        % endfor
+    </main>
 </body>
 </html>

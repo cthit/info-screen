@@ -1,11 +1,18 @@
 body {
 	margin: 0;
 	display: flex;
-	flex-wrap: wrap;
+	align-items: center;
 	color: #444;
-	justify-content: space-around;
 	background-color: #f1f1f1;
 	font-family: "Helvetica Neue", sans-serif;
+	height: 100vh;
+}
+
+main {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
 }
 
 article {
