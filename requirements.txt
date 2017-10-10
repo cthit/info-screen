@@ -1,4 +1,9 @@
+certifi==2017.7.27.1
+chardet==3.0.4
 feedparser==5.2.1
+idna==2.6
 inflection==0.3.1
 Mako==1.0.7
 MarkupSafe==1.0
+requests==2.18.4
+urllib3==1.22

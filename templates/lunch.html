@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8"/>
+</head>
+<body>
+ 	% for rest in restaurants:
+        <article>
+        	<h1>${rest['name']}</h1>
+        	<dl>
+        		% for meal in rest['meals']['sv']:
+        			<dt>${meal['title']}</dt>
+        			<dd>${meal['summary']}</dd>
+        		% endfor
+        	</dl>
+        </article>
+    % endfor
+</body>
+</html>
