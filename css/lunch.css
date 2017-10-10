@@ -1,0 +1,33 @@
+body {
+	margin: 0;
+	display: flex;
+	flex-wrap: wrap;
+	color: #444;
+	justify-content: space-around;
+	background-color: #f1f1f1;
+	font-family: "Helvetica Neue", sans-serif;
+}
+
+article {
+	width: 230px;
+	height: auto;
+	padding: 1em;
+	margin: 15px 2%;
+	border-radius: 0.1em;
+	background-color: #fff;
+	box-shadow: 1px 1px 5px #aaa;
+}
+
+h1 {
+	margin: 0 auto;
+	text-align: center;
+}
+
+dt {
+	font-weight: 600;
+}
+
+dd {
+	margin-bottom: 7px;
+	margin-left: 0;
+}
