@@ -66,9 +66,9 @@ def fetch_lunch():
 	f.close()
 
 
-def parse_date(date):
+def parse_date(date, fmt="%H:%M"):
 	date = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%fZ")
-	return date.strftime("%H:%M")
+	return date.strftime(fmt)
 
 def fetch_bookit():
 	bookit_url = "https://bookit.chalmers.it/bookings/today.json"
@@ -82,13 +82,14 @@ def fetch_bookit():
 	bookings = sorted(bookings, key=lambda booking: booking['begin_date'])
 
 	for booking in bookings:
+		booking['day'] = parse_date(booking['begin_date'], "%Y-%m-%d")
 		booking['begin_date'] = parse_date(booking['begin_date'])
 		booking['end_date'] = parse_date(booking['end_date'])
 
 	bookings_by_room = {}
 
 	for booking in bookings:
-		bookings_by_room.setdefault(booking['room'], []).append(booking)
+		bookings_by_room.setdefault(booking['room'], {}).setdefault(booking['day'], []).append(booking)
 
 	f.write(template.render(bookings_by_room=bookings_by_room))
 	f.close()

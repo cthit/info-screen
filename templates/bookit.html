@@ -7,16 +7,19 @@
 </head>
 <body>
 	<main>
-		% for room, bookings in bookings_by_room.items():
-			<article class="${room.lower()}">
-				<h1>${room}</h1>
+	% for room, bookings in bookings_by_room.items():
+		<article class="${room.lower()}">
+			<h1>${room}</h1>
+			% for day, bookings in bookings.items():
+				<h2>${day}</h2>
 				% for booking in bookings:
 					<div>
-						<h2>${booking['title']}</h2>
+						<h3>${booking['title']}</h3>
 						<p>${booking['description']}</p>
 						<time>${booking['begin_date']} - ${booking['end_date']}</time>
 					</div>
 				% endfor
+			% endfor
 			</article>
 		% endfor
 	</main>
