@@ -10,7 +10,7 @@
         	<h1>${rest['name']}</h1>
         	<dl>
         		% for meal in rest['meals']['sv']:
-        			<dt>${meal['title']}</dt>
+        			<dt>${meal['title']} <span class="allergens">${' '.join(meal['allergens'] if meal['allergens'] else [])}</span></dt>
         			<dd>${meal['summary']}</dd>
         		% endfor
         	</dl>
