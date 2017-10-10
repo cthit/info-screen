@@ -5,17 +5,17 @@
 	<meta charset="utf-8"/>
 </head>
 <body>
- 	% for room, bookings in bookings_by_room.items():
-        <article>
-        	<h1>${room}</h1>
-        	% for booking in bookings:
-        		<div>
-	        		<h2>${booking['title']}</h2>
-	        		<div>${booking['description']}</div>
-	        		<div>${booking['begin_date']} - ${booking['end_date']}</div>
-        		</div>
+	% for room, bookings in bookings_by_room.items():
+		<article class="${room.lower()}">
+			<h1>${room}</h1>
+			% for booking in bookings:
+				<div>
+					<h2>${booking['title']}</h2>
+					<p>${booking['description']}</p>
+					<time>${booking['begin_date']} - ${booking['end_date']}</time>
+				</div>
 			% endfor
-        </article>
-    % endfor
+		</article>
+	% endfor
 </body>
 </html>
