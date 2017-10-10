@@ -10,5 +10,10 @@
         	${item['description']}
         </article>
     % endfor
+    <script type="text/javascript">
+    	Array.from(document.querySelectorAll('img')).forEach(el => {
+    		el.src = 'https://chalmers.it' + el.src.replace('file://', '')
+    	});
+    </script>
 </body>
 </html>

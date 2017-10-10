@@ -2,30 +2,23 @@ import feedparser
 from inflection import parameterize
 from mako.template import Template
 
-def parse_xkcd(entry):
+def parse_alt_xkcd(entry):
 	parsed_description = feedparser.parse(entry['description'])
-	alt_text = parsed_description['feed']['img']['title']
-	return entry['description'] + '<br/>' + alt_text
+	return parsed_description['feed']['img']['title']
+
+parse_description = lambda entry: entry['description']
 
 feeds = [{
 	'name': "xkcd",
 	'layout': "layout",
 	'url': "https://xkcd.com/rss.xml",
 	'count': 1,
-	'parse_description': lambda entry: entry['description'],
-	'parse_alt': parse_xkcd
+	'parse_alt': parse_alt_xkcd
 }, {
 	'name': "chalmers-it",
 	'layout': "chalmers-it",
 	'url': "https://chalmers.it/posts.rss",
-	'count': 3,
-	'parse_description': lambda entry: entry['description']
-}, {
-	'name': "commit-strip",
-	'layout': "layout",
-	'url': "https://www.commitstrip.com/en/feed/",
-	'count': 3,
-	'parse_description': lambda entry: entry['content'][0]['value']
+	'count': 3
 }]
 
 for feed_data in feeds:
@@ -38,7 +31,8 @@ for feed_data in feeds:
 		entry = feed['entries'][i]
 		item = {
 			'title': entry['title'],
-			'description': feed_data.get('parse_description')(entry)
+			'description': feed_data.get('parse_description', parse_description)(entry),
+			'alt_text': feed_data.get('parse_alt', lambda x: '')(entry)
 		}
 
 		items.append(item)
