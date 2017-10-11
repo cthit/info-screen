@@ -13,12 +13,25 @@
 			flex: 1;
 		}
 		.hide { display: none; }
+                #progress {
+                        position: absolute;
+                        bottom: 0;
+                        height: 10px;
+                        width: 10%;
+                        left: 0;
+                        background-color: #09cdda;
+                        transition: width ease-out 1000ms;
+                }
+                .no-transition {
+                        transition: none;
+                }
 	</style>
 </head>
 <body>
 <iframe id="frame1" frameborder="0" border="0" scrolling="no"></iframe>
 <iframe id="frame2" frameborder="0" border="0" scrolling="no"></iframe>
 <iframe id="timeeditFrame" src="https://se.timeedit.net/web/chalmers/db1/public/riqm8Q1Ym1XZ44Qy517Y503064Z8Z053X55Y87QQ4YoX13550944Y5YQX3144Q808x8Xl341l098u471955YZ3Y15Z0X95Z544Qul80qWZQ5l6Qcf8ckqluZ0Q3bZXQqQo4l555ZQ0ZkqcQ1552mW3ZZ7qbQo1QxbQQZogrmZcZq605.html" frameborder="0" border="0" scrolling="no"></iframe>
+<div id="progress"></div>
 <script>
 var sites = [
         ["chalmers-it.html", "lunch.html"],
@@ -28,9 +41,24 @@ var sites = [
 ]
 var index = 0;
 var time = 15000;
+var timeStarted = 0;
+var lastWidth = 0;
 var frame1 = document.getElementById('frame1');
 var frame2 = document.getElementById('frame2');
 var timeeditFrame = document.getElementById('timeeditFrame');
+var progressElement = document.getElementById('progress');
+
+function updateProgress() {
+        progressElement.classList.remove('no-transition')
+        var timeElapsed = new Date() - timeStarted;
+        var ratio = timeElapsed / time * 100;
+        if (ratio < lastWidth) {
+                progressElement.classList.add('no-transition')
+        }
+        progressElement.style.width = ratio + '%';
+        lastWidth = ratio;
+        setTimeout(updateProgress, 300);
+}
 
 (function loop() {
         var currentSites = sites[index];
@@ -60,6 +88,12 @@ var timeeditFrame = document.getElementById('timeeditFrame');
                 timeeditFrame.src = timeeditFrame.src;
         }
 
+        var updateProgressStarted = timeStarted !== 0;
+
+        timeStarted = new Date();
+        if (!updateProgressStarted) {
+                updateProgress();
+        }
 
         setTimeout(loop, time);
 })();
