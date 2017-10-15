@@ -13,9 +13,9 @@
         </article>
     % endfor
     <script type="text/javascript">
-    	Array.from(document.querySelectorAll('img')).forEach(el => {
-    		el.src = 'https://chalmers.it' + el.src.replace('file://', '')
-    	});
+        Array.from(document.querySelectorAll('img')).forEach(el => {
+            el.src = el.src.replace('file://', 'https://chalmers.it')
+        });
     </script>
 </body>
 </html>
